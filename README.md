@@ -4,6 +4,16 @@ Electron React Admin Boilerplate uses <a href="https://electron.atom.io/">Electr
 
 Fork from: <a href="https://github.com/electron-react-boilerplate/electron-react-boilerplate">https://github.com/electron-react-boilerplate/electron-react-boilerplate</a>.
 
+## Install
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/libeyondea/electron-react-admin-boilerplate.git
+cd electron-react-admin-boilerplate
+npm install
+```
+
 ## Starting Development
 
 Start the app in the `dev` environment:

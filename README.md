@@ -14,6 +14,8 @@ cd electron-react-admin-boilerplate
 npm install
 ```
 
+And install backend project: https://github.com/libeyondea/backend-libeyondea-app.
+
 ## Starting Development
 
 Start the app in the `dev` environment:

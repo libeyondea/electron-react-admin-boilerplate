@@ -1,16 +1,17 @@
 import { FormikHelpers } from 'formik';
-import * as Yup from 'yup';
-import CardComponent from 'renderer/components/Card/components';
-import * as routeConstant from 'renderer/constants/route';
+import { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+
+import ButtonComponent from 'renderer/components/Button/components';
+import CardComponent from 'renderer/components/Card/components';
+import FormComponent from 'renderer/components/Form/components';
 import LinkComponent from 'renderer/components/Link/components';
+import * as routeConstant from 'renderer/constants/route';
+import { errorHandler } from 'renderer/helpers/error';
+import toastify from 'renderer/helpers/toastify';
 import authService from 'renderer/services/authService';
 import { SignUpFormik } from 'renderer/types/auth';
-import FormComponent from 'renderer/components/Form/components';
-import { Fragment } from 'react';
-import toastify from 'renderer/helpers/toastify';
-import { errorHandler } from 'renderer/helpers/error';
-import ButtonComponent from 'renderer/components/Button/components';
 
 type Props = {};
 
@@ -175,7 +176,7 @@ const SignUpComponent: React.FC<Props> = () => {
 			</FormComponent>
 			<div className="relative my-6">
 				<div className="absolute inset-0 flex items-center">
-					<div className="w-full border-t border-gray-400"></div>
+					<div className="w-full border-t border-gray-400" />
 				</div>
 				<div className="relative flex justify-center text-sm">
 					<span className="px-2 text-neutral-700 bg-white leading-none"> Or continue with </span>

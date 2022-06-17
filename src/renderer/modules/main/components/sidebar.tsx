@@ -1,19 +1,20 @@
+import { Disclosure, Transition } from '@headlessui/react';
 import classNames from 'classnames';
-import LinkComponent from 'renderer/components/Link/components';
-import { appSidebarRequestAction } from 'renderer/store/app/actions';
+import { Fragment } from 'react';
+import { FaChevronLeft, FaCog, FaEllipsisH, FaPlusCircle, FaRegListAlt, FaTachometerAlt, FaUsers } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
+
 import ImageComponent from 'renderer/components/Image/components';
+import LinkComponent from 'renderer/components/Link/components';
+import NavLinkComponent from 'renderer/components/NavLink/components';
 import config from 'renderer/config';
 import * as routeConstant from 'renderer/constants/route';
 import * as userConstant from 'renderer/constants/user';
 import useAppDispatch from 'renderer/hooks/useAppDispatch';
-import { useLocation } from 'react-router-dom';
-import { Disclosure, Transition } from '@headlessui/react';
-import NavLinkComponent from 'renderer/components/NavLink/components';
-import { FaChevronLeft, FaCog, FaEllipsisH, FaPlusCircle, FaRegListAlt, FaTachometerAlt, FaUsers } from 'react-icons/fa';
-import { Fragment } from 'react';
 import useAppSelector from 'renderer/hooks/useAppSelector';
-import { selectAuthCurrent } from 'renderer/store/auth/selectors';
+import { appSidebarRequestAction } from 'renderer/store/app/actions';
 import { selectAppSidebar } from 'renderer/store/app/selectors';
+import { selectAuthCurrent } from 'renderer/store/auth/selectors';
 
 type Props = {};
 
@@ -24,11 +25,12 @@ const SidebarComponent: React.FC<Props> = () => {
 	const authCurrent = useAppSelector(selectAuthCurrent);
 
 	return (
-		<div className="sidebar flex">
+		<div className="flex">
 			<div
-				className={classNames('fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden', appSidebar ? 'hidden' : 'block')}
-				onClick={() => dispatch(appSidebarRequestAction(true))}
-			></div>
+				className={classNames('fixed inset-0 z-20 bg-gray-900/50 lg:hidden', appSidebar ? 'hidden' : 'block')}
+				onMouseDown={() => dispatch(appSidebarRequestAction(true))}
+				onTouchStart={() => dispatch(appSidebarRequestAction(true))}
+			/>
 			<div
 				className={classNames(
 					'fixed inset-y-0 left-0 max-w-full flex transition-all ease-in-out duration-500 flex-shrink-0 z-30',
@@ -89,7 +91,6 @@ const SidebarComponent: React.FC<Props> = () => {
 												</Disclosure.Button>
 												<Transition
 													as={Fragment}
-													show={open}
 													enter="transition duration-100 ease-out"
 													enterFrom="transform scale-95 opacity-0"
 													enterTo="transform scale-100 opacity-100"
@@ -126,7 +127,10 @@ const SidebarComponent: React.FC<Props> = () => {
 										)}
 									</Disclosure>
 								)}
-								<Disclosure as="li" defaultOpen={[`/${routeConstant.ROUTE_NAME_MAIN}/${routeConstant.ROUTE_NAME_MAIN_SETTING}`].includes(location.pathname)}>
+								<Disclosure
+									as="li"
+									defaultOpen={[`/${routeConstant.ROUTE_NAME_MAIN}/${routeConstant.ROUTE_NAME_MAIN_SETTING}`].includes(location.pathname)}
+								>
 									{({ open }) => (
 										<Fragment>
 											<Disclosure.Button
@@ -147,7 +151,6 @@ const SidebarComponent: React.FC<Props> = () => {
 											</Disclosure.Button>
 											<Transition
 												as={Fragment}
-												show={open}
 												enter="transition duration-100 ease-out"
 												enterFrom="transform scale-95 opacity-0"
 												enterTo="transform scale-100 opacity-100"

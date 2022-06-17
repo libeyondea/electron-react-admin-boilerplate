@@ -1,28 +1,28 @@
+import { Suspense, lazy } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
-import * as routeConstant from 'renderer/constants/route';
-import { lazy, Suspense } from 'react';
-
 import type { RouteObject } from 'react-router-dom';
+
+import * as routeConstant from 'renderer/constants/route';
 
 const ListUserComponent = lazy(() => import('./list/components'));
 
 const UserRouter = () => {
-  const routes: RouteObject[] = [
-    {
-      path: '/*',
-      element: (
-        <Suspense fallback={null}>
-          <ListUserComponent />
-        </Suspense>
-      ),
-    },
-    {
-      path: '*',
-      element: <Navigate to={`${routeConstant.ROUTE_NAME_SPLASH}`} />,
-    },
-  ];
+	const routes: RouteObject[] = [
+		{
+			path: '/*',
+			element: (
+				<Suspense fallback={null}>
+					<ListUserComponent />
+				</Suspense>
+			)
+		},
+		{
+			path: '*',
+			element: <Navigate to={`${routeConstant.ROUTE_NAME_SPLASH}`} />
+		}
+	];
 
-  return useRoutes(routes);
+	return useRoutes(routes);
 };
 
 export default UserRouter;

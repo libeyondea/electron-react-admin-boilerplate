@@ -31,11 +31,13 @@
 	},
 	"browserslist": [],
 	"prettier": {
-		"endOfLine": "auto",
-		"singleQuote": true,
-		"trailingComma": "none",
+		"endOfLine": "lf",
 		"useTabs": true,
 		"printWidth": 166,
+		"tabWidth": 4,
+		"trailingComma": "none",
+		"singleQuote": true,
+		"semi": true,
 		"overrides": [
 			{
 				"files": [

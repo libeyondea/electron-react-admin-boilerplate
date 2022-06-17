@@ -1,27 +1,27 @@
+import { configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 import { createEpicMiddleware } from 'redux-observable';
-import config from 'renderer/config';
-import rootReducer from './rootReducer';
+
 import rootEpic from './rootEpic';
-import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './rootReducer';
+import config from 'renderer/config';
 
 const epicMiddleware = createEpicMiddleware();
 
 const middlewares = [
-  createLogger({
-    predicate: () => config.LOGGER.REDUX,
-  }),
-  epicMiddleware,
+	createLogger({
+		predicate: () => config.LOGGER.REDUX
+	}),
+	epicMiddleware
 ];
 
 const preloadedState = {};
 
 const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middlewares),
-  devTools: process.env.NODE_ENV !== 'production',
-  preloadedState,
+	reducer: rootReducer,
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
+	devTools: process.env.NODE_ENV !== 'production',
+	preloadedState
 });
 
 epicMiddleware.run(rootEpic);

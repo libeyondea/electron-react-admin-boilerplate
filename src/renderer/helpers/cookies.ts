@@ -1,10 +1,8 @@
-import cookie from 'js-cookie';
-
-export const setCookie = (key: string, value: string, options?: cookie.CookieAttributes): void => {
+export const setCookie = (key: string, value: string, options?: any): void => {
 	window.localStorage.setItem(key, value);
 };
 
-export const removeCookie = (key: string, options?: cookie.CookieAttributes): void => {
+export const removeCookie = (key: string, options?: any): void => {
 	window.localStorage.removeItem(key);
 };
 

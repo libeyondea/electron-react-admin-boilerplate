@@ -1,17 +1,18 @@
-import { getCookie } from 'renderer/helpers/cookies';
-import { appInitializedRequestAction } from 'renderer/store/app/actions';
-import { authCurrentDataRequestAction, authCurrentTokenRequestAction } from 'renderer/store/auth/actions';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import ImageComponent from 'renderer/components/Image/components';
 import config from 'renderer/config';
-import { selectIsAuth } from 'renderer/store/auth/selectors';
 import * as cookiesConstant from 'renderer/constants/cookies';
 import * as routeConstant from 'renderer/constants/route';
+import { getCookie } from 'renderer/helpers/cookies';
+import { errorHandler } from 'renderer/helpers/error';
 import useAppDispatch from 'renderer/hooks/useAppDispatch';
 import useAppSelector from 'renderer/hooks/useAppSelector';
-import { useNavigate, useLocation } from 'react-router-dom';
 import useOnceEffect from 'renderer/hooks/useOnceEffect';
 import authService from 'renderer/services/authService';
-import { errorHandler } from 'renderer/helpers/error';
+import { appInitializedRequestAction } from 'renderer/store/app/actions';
+import { authCurrentDataRequestAction, authCurrentTokenRequestAction } from 'renderer/store/auth/actions';
+import { selectIsAuth } from 'renderer/store/auth/selectors';
 import { LocationState } from 'renderer/types/router';
 
 type Props = {};

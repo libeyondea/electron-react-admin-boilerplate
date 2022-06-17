@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+
 import ImageComponent from 'renderer/components/Image/components';
 import config from 'renderer/config';
 import useAppSelector from 'renderer/hooks/useAppSelector';
